@@ -52,6 +52,9 @@ contract transplantChain {
         Patient.patient = _patient;
         Patient.urgency = _urgency;
         verifications[_username] += 1;
+        if(verifications[_username] >= 3){
+          throw;
+        }
         
         if (Patient.isDonor == true) donor = msg.sender;
         if (Patient.isDonor == false) reciever = msg.sender;
