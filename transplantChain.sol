@@ -12,6 +12,7 @@ contract transplantChain {
         uint position;
         bool isDonor;
         address patient;
+        uint urgency;
     }
     
     mapping(address => Patient) public patients;
