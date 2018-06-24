@@ -24,7 +24,7 @@ contract transplantChain {
     } 
     
     modifier doctorSignOffs() {
-        require(msg.sender == doctorOneTwo);
+        require(msg.sender == doctors);
         _;
     }
     
