@@ -385,16 +385,16 @@
                 <div>
                     <p style="display:inline; margin-left: 40px"> Blood type </p>
                     <p style="display:inline; margin-left: 20px"> A </p>
-                    <input type="checkbox" style="margin-left:15px; margin-top: 40px">
+                    <input id ="blood" type="checkbox" style="margin-left:15px; margin-top: 40px">
                     </input>
                     <p style="display:inline; margin-left: 20px"> B </p>
-                    <input type="checkbox" style="margin-left:15px; margin-top: 40px">
+                    <input id ="blood" type="checkbox" style="margin-left:15px; margin-top: 40px">
                     </input>
                     <p style="display:inline; margin-left: 20px"> AB </p>
-                    <input type="checkbox" style="margin-left:15px; margin-top: 40px">
+                    <input id ="blood" type="checkbox" style="margin-left:15px; margin-top: 40px">
                     </input>
                     <p style="display:inline; margin-left: 20px"> O </p>
-                    <input type="checkbox" style="margin-left:15px; margin-top: 40px">
+                    <input id ="blood" type="checkbox" style="margin-left:15px; margin-top: 40px">
                     </input>
                 </div>
                 <div>
@@ -531,7 +531,11 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
-
+<!--GETTING INFO FROM CHECK BOX
+<script type="text/javascript">
+    var checkedValue = document.querySelector('.blood:checked').value;
+</script>
+-->
 </body>
 
 </html>
