@@ -11,6 +11,7 @@ contract transplantChain {
         bool operationEligibility;
         uint position;
         bool isDonor;
+        uint urgency;
         address patient;
     }
     
@@ -56,5 +57,11 @@ contract transplantChain {
         if (Patient.isDonor == false) reciever = msg.sender;
         }
     }
-    
+    address username;
+    function setUserName(address _username) {
+        username = _username;
+    }
+    function getData() view public returns(uint){
+        return(verifications[username]);
+    }
 }
