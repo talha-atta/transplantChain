@@ -12,7 +12,6 @@ contract transplantChain {
         uint position;
         bool isDonor;
         address patient;
-        uint urgency;
     }
     
     mapping(address => Patient) public patients;
@@ -39,7 +38,7 @@ contract transplantChain {
         
     } 
     
-    function setData(address _username, string _bloodType, string _HLA, uint _age, bool _operationEligibility, uint _position, bool _isDonor, address _patient, bool _doctorSignOff) {
+    function setData(address _username, string _bloodType, string _HLA, uint _age, bool _operationEligibility, uint _position, bool _isDonor, address _patient, bool _doctorSignOff, uint _urgency) {
         var Patient = patients[_username];
         if(_doctorSignOff == true) {
         Patient.bloodType = _bloodType;
@@ -49,6 +48,7 @@ contract transplantChain {
         Patient.position = _position;
         Patient.isDonor = _isDonor;
         Patient.patient = _patient;
+        Patient.urgency = _urgency;
         
         if (Patient.isDonor == true) donor = msg.sender;
         if (Patient.isDonor == false) reciever = msg.sender;
