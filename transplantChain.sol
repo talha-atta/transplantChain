@@ -23,33 +23,24 @@ contract transplantChain {
         _;
     } 
     
-    modifier doctorOneOnly() {
-        require(msg.sender == doctorOne);
+    modifier doctorSignOffs() {
+        require(msg.sender == doctorOneTwo);
         _;
     }
-    
-    modifier doctorTwoOnly() {
-        require(msg.sender == doctorTwo);
-        _;
-    }
-
     
     //Declaring Varibles
-    address public doctorOne;
-    address public doctorTwo;
+    address public doctors;
     address public donor;
     address public reciever; 
-
-    uint sendPart;
     
-    function transplantChain(address _patient, address _doctorOne, address _doctorTwo, address _donor) payable {
-        doctorOne = _doctorOne;
-        doctorTwo = _doctorTwo;
+    function transplantChain(address _doctors) payable {
+        doctors = _doctors;
+        
     } 
     
-    function setData(address _username, string _bloodType, bytes32 _HLA, uint _age, bool _operationEligibility, uint _position, bool _isDonor, address _patient) {
+    function setData(address _username, string _bloodType, bytes32 _HLA, uint _age, bool _operationEligibility, uint _position, bool _isDonor, address _patient, bool _doctorSignOff) {
         var Patient = patients[_username];
-        
+        if(_doctorSignOff == true) {
         Patient.bloodType = _bloodType;
         Patient.HLA = _HLA;
         Patient.age = _age;
@@ -59,19 +50,8 @@ contract transplantChain {
         Patient.patient = _patient;
         
         if (Patient.isDonor == true) donor = msg.sender;
-        if (Patient.isDonor == true) reciever = msg.sender;
-        
-        patientAccts.push(_username) -1;
-    }
-    
-    function firstValidation(bool confirm) doctorOneOnly public payable{
-        if (confirm == true) sendPart += 1;
-        if (sendPart == 2) reciever.transfer[this.balance];
-    } 
-    
-    function secondValidation(bool confirm) doctorTwoOnly public payable {
-        if (confirm == true) sendPart += 1;
-        if (sendPart == 2) reciever.transfer[this.balance];
+        if (Patient.isDonor == false) reciever = msg.sender;
+        }
     }
     
 }
