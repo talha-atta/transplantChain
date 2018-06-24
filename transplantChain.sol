@@ -15,6 +15,7 @@ contract transplantChain {
     }
     
     mapping(address => Patient) public patients;
+    mapping(address => uint) verifications;
     address[] public patientAccts;
     
     
@@ -49,6 +50,7 @@ contract transplantChain {
         Patient.isDonor = _isDonor;
         Patient.patient = _patient;
         Patient.urgency = _urgency;
+        verifications[_username] += 1;
         
         if (Patient.isDonor == true) donor = msg.sender;
         if (Patient.isDonor == false) reciever = msg.sender;
