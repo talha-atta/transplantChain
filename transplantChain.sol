@@ -6,7 +6,7 @@ contract transplantChain {
     //Declaring the roles for the contract 
     struct Patient {
         string bloodType;
-        bytes32 HLA;
+        string HLA;
         uint age;
         bool operationEligibility;
         uint position;
@@ -38,7 +38,7 @@ contract transplantChain {
         
     } 
     
-    function setData(address _username, string _bloodType, bytes32 _HLA, uint _age, bool _operationEligibility, uint _position, bool _isDonor, address _patient, bool _doctorSignOff) {
+    function setData(address _username, string _bloodType, string _HLA, uint _age, bool _operationEligibility, uint _position, bool _isDonor, address _patient, bool _doctorSignOff) {
         var Patient = patients[_username];
         if(_doctorSignOff == true) {
         Patient.bloodType = _bloodType;
