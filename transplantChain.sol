@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma experimental ABIEncoderV2;
 
 contract transplantChain {
     
@@ -17,8 +17,10 @@ contract transplantChain {
     
     mapping(address => Patient) public patients;
     mapping(address => uint) verifications;
-    address[] public patientAccts;
-    
+    Patient[] public allPatients;
+    function stringReturn() view public returns(Patient[]) {
+        return allPatients;
+    }
     
    modifier donorOnly() {
         require(msg.sender == donor);
@@ -52,8 +54,9 @@ contract transplantChain {
         Patient.patient = _patient;
         Patient.urgency = _urgency;
         verifications[_username] += 1;
-        if(verifications[_username] >= 3){
-          throw;
+        allPatients.push(patients[_username]) -1;
+        if(verifications[_username] >= 3) {
+            throw;
         }
         
         if (Patient.isDonor == true) donor = msg.sender;
